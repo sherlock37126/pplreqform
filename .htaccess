@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} ^.*(HTTrack|wget|curl|Scrapy|python-requests|axios|Java|powershell|Go-http-client|libwww-perl).*$ [NC]
+RewriteRule ^.* - [F,L]
+</IfModule>
+
+<IfModule mod_evasive20.c>
+   DOSHashTableSize    3097
+   DOSPageCount        2
+   DOSSiteCount        50
+   DOSPageInterval     1
+   DOSSiteInterval     1
+   DOSBlockingPeriod   60
+</IfModule>
